@@ -5,6 +5,8 @@ import { Button } from "../ui/button";
 import { IoBed } from "react-icons/io5";
 import { FaCarSide, FaPlane } from "react-icons/fa";
 import RegionSettings from "./RegionSettings";
+import { SignInButton, SignedIn, SignedOut, UserButton } from "@clerk/nextjs";
+import Link from "next/link";
 
 const Navbar = () => {
   return (
@@ -16,10 +18,15 @@ const Navbar = () => {
           width={150}
           alt="logo"
         />
-        <div className="flex flex-col gap-5 text-white md:flex-row">
+        <div className="flex flex-col items-center gap-5 text-white md:flex-row">
           <RegionSettings />
-          <div>
-            <span>signin/signup</span>
+          <div className="flex items-center">
+            <SignedIn>
+              <UserButton afterSignOutUrl="/" />
+            </SignedIn>
+            <SignedOut>
+              <SignInButton />
+            </SignedOut>
           </div>
         </div>
       </div>
